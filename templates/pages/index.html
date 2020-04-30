@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row">
+        <!-- alerts -->
+        {% include 'partials/_alerts.html' %}
+        </div>
+        <div class="card">
+            <div class="card-header" style="background-color: white;">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h5><b>Single symptoms per individuals</b></h5>
+                        <small>
+                            <p>Individuals who experience 1 COVID-19 symptom</p>
+                        </small>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="row">
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="card-body">
+              {% include 'pages/single_symptom.html' %}
+            </div>
+          </div><br><br>
+    <div class="card">
+        <div class="card-header" style="background-color: white;">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h5><b>Suspected cases with 5 symptoms</b></h5>
+                    <small>
+                        <p>Individuals who experience 5 COVID-19 symptoms</p>
+                    </small>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <small class="form-text text-muted">
+                                <p><i class="fas fa-circle"></i> Sever fever</p>
+                            </small>
+                        </div>
+                        <div class="col-sm-2">
+                            <small class="form-text text-muted">
+                                <p><i class="fas fa-circle"></i> Cough</p>
+                            </small>
+                        </div>
+                        <div class="col-sm-3">
+                            <small class="form-text text-muted">
+                                <p><i class="fas fa-circle"></i> Shortness of breath</p>
+                            </small>
+                        </div>
+                        <div class="col-sm-2">
+                            <small class="form-text text-muted">
+                                <p><i class="fas fa-circle"></i> Tiredness</p>
+                            </small>
+                        </div>
+                        <div class="col-sm-2">
+                            <small class="form-text text-muted">
+                                <p><i class="fas fa-circle"></i> Sore Throat</p>
+                            </small>
+                        </div>
+        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="card-body">
+          {% include 'pages/five_symptoms.html' %}
+        </div>
+      </div>
+        <br><br>
+        <div class="card">
+            <div class="card-header" style="background-color: white;">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h5><b>Suspected cases with 3 symptoms</b></h5>
+                        <small>
+                            <p>Individuals who experience the 3 COVID-19 symptoms</p>
+                        </small>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <small class="form-text text-muted">
+                                    <p><i class="fas fa-circle"></i> Sever fever</p>
+                                </small>
+                            </div>
+                            <div class="col-sm-3">
+                                <small class="form-text text-muted">
+                                    <p><i class="fas fa-circle"></i> Cough</p>
+                                </small>
+                            </div>
+                            <div class="col-sm-3">
+                                <small class="form-text text-muted">
+                                    <p><i class="fas fa-circle"></i> Shortness of breath</p>
+                                </small>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="card-body">
+              {% include 'pages/three_symptoms.html' %}
+            </div>
+          </div>
+        <br><br>
+
+    </div>
+</div>
+
+{% endblock %}

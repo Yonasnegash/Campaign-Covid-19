@@ -1,0 +1,125 @@
+<div id="container" class="container" style="margin-left: 10px; margin-right: 10px;">
+    <!-- <h5 style="text-align: center;"><b>Symptoms with "High Fever" in different zones</b></h5> -->
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="fever-chart" data-url="{% url 'fever-chart' %}"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="fever-chart2" data-url="{% url 'fever-chart' %}"></canvas>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $feverChart = $("#fever-chart");
+      $.ajax({
+        url: $feverChart.data("url"),
+        success: function (data) {
+
+          var ctx = $feverChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'High fever',
+                data: data.data,
+                backgroundColor: [
+                'rgba(52, 152, 219, 0.8)',
+                'rgba(170, 183, 184, 0.8)',
+                'rgba(236, 112, 99, 0.8)',
+                'rgba(133, 193, 233, 0.8)',
+                'rgba(72, 201, 176, 0.8)',
+                'rgba(195, 155, 211, 0.8)',
+                'rgba(46, 204, 113, 0.8)',
+                'rgba(155, 89, 182, 0.8)',
+            ],
+            borderColor: [
+            'rgba(52, 152, 219, 0.8)',
+            'rgba(170, 183, 184, 0.8)',
+            'rgba(236, 112, 99, 0.8)',
+            'rgba(133, 193, 233, 0.8)',
+            'rgba(72, 201, 176, 0.8)',
+            'rgba(195, 155, 211, 0.8)',
+            'rgba(46, 204, 113, 0.8)',
+            'rgba(155, 89, 182, 0.8)',
+            ],
+            borderWidth: 0
+              }]          
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'High fever bar chart'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+    
+    $(function () {
+
+        var $feverChart2 = $("#fever-chart2");
+        $.ajax({
+          url: $feverChart2.data("url"),
+          success: function (data) {
+            
+            var ctx2 = $feverChart2[0].getContext("2d");
+            new Chart(ctx2, {
+              type: 'doughnut',
+              data: {
+                labels: data.labels,
+                datasets: [{
+                  label: 'High fever',
+                  data: data.data,
+                  backgroundColor: ['rgba(52, 152, 219, 0.8)',
+                  'rgba(170, 183, 184, 0.8)',
+                  'rgba(236, 112, 99, 0.8)',
+                  'rgba(133, 193, 233, 0.8)',
+                  'rgba(72, 201, 176, 0.8)',
+                  'rgba(195, 155, 211, 0.8)',
+                  'rgba(46, 204, 113, 0.8)',
+                  'rgba(155, 89, 182, 0.8)',],
+            borderColor: [
+            'rgba(52, 152, 219, 0.8)',
+            'rgba(170, 183, 184, 0.8)',
+            'rgba(236, 112, 99, 0.8)',
+            'rgba(133, 193, 233, 0.8)',
+            'rgba(72, 201, 176, 0.8)',
+            'rgba(195, 155, 211, 0.8)',
+            'rgba(46, 204, 113, 0.8)',
+            'rgba(155, 89, 182, 0.8)',
+            ],
+            borderWidth: 0
+                }]          
+              },
+              options: {
+                responsive: true,
+                legend: {
+                  position: 'top',
+                },
+                title: {
+                  display: true,
+                  text: 'High fever Bar chart'
+                }
+              }
+            });
+  
+          }
+        });
+  
+      });
+</script>

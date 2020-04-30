@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Alert -->
+{% include 'partials/_alerts.html' %}
+<!-- Main Content -->
+<div class="row" style="margin-left: 10px; margin-right: 10px; margin-top: 50px;" id="allOf">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-lg-6 col-offset">
+      <!-- Add Contribution -->
+     
+      <h4>Survey for COVID-19 pandamic disease. Please fill the information below</h4>
+      <div>
+          <small>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+              Your personal information is kept confidential. We do no share or sell your information.</small>
+          </small>
+      </div>
+      <hr>
+      <div class="card">
+        <h5 class="card-header"><i class="fas fa-info-circle"></i> Provide Infomation</h5>
+        <div class="card-body">
+            <!-- alerts -->
+      <form action="{% url 'update' single_symptom.id %}" method="POST">
+        {% csrf_token %}
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+          <input type="hidden" name="user_id" value="{{ user.id }}">
+        {% else %}
+        <input type="hidden" name="user_id" value="0">
+        {% endif %}
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-5 pt-0">Do you have feel Severe fever?</legend>
+            <div class="col-sm-4">
+              <select name="fever" class="form-control" id="exampleFormControlSelect1">
+                  <option>--select--</option>
+                  <option>Yes</option>
+                  <option>No</option>
+              </select>
+            </div>
+            <div class="col-sm-3"> 
+              <p>Current Status: <b>{% if single_symptom.high_fever == 1 %} Yes {% else %} No {% endif %}</b></p>
+            </div>
+          </div>
+        </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you have Cough?</legend>
+      <div class="col-sm-4">
+        <select name="cough" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+      <div class="col-sm-3"> 
+        <p>Current Status: <b>{% if single_symptom.cough == 1 %} Yes {% else %} No {% endif %}</b></p>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you have Shortness of breath?</legend>
+      <div class="col-sm-4">
+        <select name="shortness_of_breath" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+      <div class="col-sm-3"> 
+        <p>Current Status: <b>{% if single_symptom.shortness_of_breath == 1 %} Yes {% else %} No {% endif %}</b></p>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you feel tiredness?</legend>
+      <div class="col-sm-4">
+        <select name="tiredness" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+      <div class="col-sm-3"> 
+        <p>Current Status: <b>{% if single_symptom.tiredness == 1 %} Yes {% else %} No {% endif %}</b></p>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you feel sore throat?</legend>
+      <div class="col-sm-4">
+        <select name="sore_throat" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+      <div class="col-sm-3"> 
+        <p>Current Status: <b>{% if single_symptom.sore_throat == 1 %} Yes {% else %} No {% endif %}</b></p>
+      </div>
+    </div>
+  </fieldset>
+  
+<input type="submit" value="Update" class="btn btn-primary btn-block">
+
+      </form>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+{% endblock %}

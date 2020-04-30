@@ -1,0 +1,77 @@
+{% load i18n %}
+{% load static %}
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-white bg-white fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/facebook_cover_photo_1.png' %}" width="240" height="90" /></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav ml-auto">
+      
+            <li 
+            {% if 'about' in request.path %}
+            class="nav-item active"
+            {% else %}
+            class="nav-item"
+            {% endif %}>
+              <a class="nav-link" href="{% url 'about' %}">About COVID-19</a>
+            </li>
+            <li 
+            {% if 'initiator' in request.path %}
+            class="nav-item active"
+            {% else %}
+            class="nav-item"
+            {% endif %}>
+              <a class="nav-link" href="{% url 'initiator' %}">Initiator</a>
+            </li>
+    </ul>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li 
+          {% if 'dashboard' in request.path %}
+          class="nav-item active"
+          {% else %}
+          class="nav-item"
+          {% endif %}>
+            <a class="nav-link" href="{% url 'dashboard' %}">Welcome {{ user.first_name }} (Dashboard)</a>
+          </li>
+          <li 
+          {% if 'symptom' in request.path %}
+          class="nav-item active"
+          {% else %}
+          class="nav-item"
+          {% endif %}>
+            <a class="nav-link" href="{% url 'symptom' %}">Symptoms</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">
+              <i class="fas fa-sign-out-alt"></i>Logout
+              </a>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+          </li>
+        {% else %}
+          
+          <li {% if 'register' in request.path %}
+          class="nav-item active"
+          {% else %}
+          class="nav-item"
+          {% endif %}>
+            <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a>
+          </li>
+          <li {% if 'login' in request.path %}
+          class="nav-item active"
+          {% else %}
+          class="nav-item"
+          {% endif %}>
+            <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

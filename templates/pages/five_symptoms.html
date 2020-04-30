@@ -1,0 +1,230 @@
+<div id="container" class="container" style="margin-left: 10px; margin-right: 10px;">
+    <!-- <h5 style="text-align: center;"><b>Symptoms with "High Fever" in different zones</b></h5> -->
+    
+    <div class="row">
+      <div class="col-lg-12">
+        <canvas id="five-symptoms3"   data-url="{% url 'five-symptoms' %}"></canvas><br><br>
+      </div>
+      <!-- <div class="col-lg-6">
+        <canvas id="five-symptoms4"   data-url="{% url 'five-symptoms' %}"></canvas><br><br>
+      </div> -->
+    </div>
+    <div class="row">
+        <div class="col-lg-7">
+            <!-- Checkbox: <input type="checkbox" id="myCheck"  onclick="myFunction()"> -->
+            <!-- <canvas id="five-symptoms" style="display: none;" data-url="{% url 'five-symptoms' %}"></canvas> -->
+            <canvas id="five-symptoms"   data-url="{% url 'five-symptoms' %}"></canvas><br><br>
+        </div>
+        <div class="col-lg-5">
+            <canvas id="gender" data-url="{% url 'gender' %}"></canvas><br><br>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $feverChart = $("#five-symptoms");
+      $.ajax({
+        url: $feverChart.data("url"),
+        success: function (data) {
+
+          var ctx = $feverChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Number of individuals',
+                data: data.data,
+                backgroundColor: '#58D68D',
+            
+              }]          
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    max: data.data.length -2,
+                    min: 0,
+                  }
+                }]
+              },
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Bar chart'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+    
+    $(function () {
+
+        var $feverChart2 = $("#gender");
+        $.ajax({
+          url: $feverChart2.data("url"),
+          success: function (data) {
+            
+            var ctx2 = $feverChart2[0].getContext("2d");
+            new Chart(ctx2, {
+              type: 'doughnut',
+              data: {
+                labels: data.labels,
+                datasets: [{
+                  label: 'Individuals with 5 Symptom',
+                  data: data.data,
+                  backgroundColor: ['rgb(192, 57, 43)',
+                  'rgb(41, 128, 185)',
+                  'rgb(40, 180, 99)',
+                  'rgb(52, 152, 219)',
+                  'rgb(26, 188, 156)',
+                  'rgb(229, 152, 102)',
+                  'rgb(244, 208, 63)',],
+            borderColor: [
+            'rgb(192, 57, 43)',
+                  'rgb(236, 112, 99 )',
+                  'rgb(41, 128, 185)',
+                  'rgb(40, 180, 99)',
+                  'rgb(52, 152, 219)',
+                  'rgb(26, 188, 156)',
+                  'rgb(229, 152, 102)',
+                  'rgb(244, 208, 63)',
+            ],
+            borderWidth: 0
+                }]          
+              },
+              options: {
+                responsive: true,
+                legend: {
+                  position: 'bottom',
+                },
+                title: {
+                  display: true,
+                  text: 'Doughnot Chart'
+                }
+              }
+            });
+  
+          }
+        });
+  
+      });
+      $(function () {
+
+        var $feverChart2 = $("#five-symptoms3");
+        $.ajax({
+          url: $feverChart2.data("url"),
+          success: function (data) {
+            
+            var ctx2 = $feverChart2[0].getContext("2d");
+            new Chart(ctx2, {
+              type: 'line',
+              data: {
+                labels: data.labels,
+                datasets: [{
+                  label: 'Number of individuals',
+                  data: data.data,
+                  borderColor: "#c45850",
+                  fill: false
+                }]          
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      max: data.data.length -2,
+                      min: 0,
+                    }
+                  }]
+                },
+                responsive: true,
+                legend: {
+                  position: 'bottom',
+                },
+                title: {
+                  display: true,
+                  text: 'Line Chart'
+                }
+              }
+            });
+  
+          }
+        });
+  
+      });
+      $(function () {
+
+        var $feverChart2 = $("#five-symptoms4");
+        $.ajax({
+          url: $feverChart2.data("url"),
+          success: function (data) {
+            
+            var ctx2 = $feverChart2[0].getContext("2d");
+            new Chart(ctx2, {
+              type: 'pie',
+              data: {
+                labels: data.labels,
+                datasets: [{
+                  label: '5 symptoms',
+                  data: data.data,
+                  backgroundColor: ['rgba(52, 152, 219, 0.8)',
+                  'rgba(170, 183, 184, 0.8)',
+                  'rgba(236, 112, 99, 0.8)',
+                  'rgba(133, 193, 233, 0.8)',
+                  'rgba(72, 201, 176, 0.8)',
+                  'rgba(195, 155, 211, 0.8)',
+                  'rgba(46, 204, 113, 0.8)',
+                  'rgba(155, 89, 182, 0.8)',],
+            borderColor: [
+            'rgba(52, 152, 219, 0.8)',
+            'rgba(170, 183, 184, 0.8)',
+            'rgba(236, 112, 99, 0.8)',
+            'rgba(133, 193, 233, 0.8)',
+            'rgba(72, 201, 176, 0.8)',
+            'rgba(195, 155, 211, 0.8)',
+            'rgba(46, 204, 113, 0.8)',
+            'rgba(155, 89, 182, 0.8)',
+            ],
+            borderWidth: 0
+                }]          
+              },
+              options: {
+                responsive: true,
+                legend: {
+                  position: 'bottom',
+                },
+                title: {
+                  display: true,
+                  text: 'Pie Chart'
+                }
+              }
+            });
+  
+          }
+        });
+  
+      });
+</script>
+<!-- <script>
+    function myFunction() {
+      var checkBox = document.getElementById("myCheck");
+      var text = document.getElementById("five-symptoms");
+      if (checkBox.checked == true){
+        text.style.display = "block";
+      } else {
+         text.style.display = "none";
+      }
+    }
+    </script> -->

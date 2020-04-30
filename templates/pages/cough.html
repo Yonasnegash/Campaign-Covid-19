@@ -1,0 +1,127 @@
+<div id="container" class="container" style="margin-left: 10px; margin-right: 10px;">
+    <h5 style="text-align: center;">Symptoms with "Cough" in different cities</h5>
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="cough-chart" data-url="{% url 'cough' %}"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="cough-chart2" data-url="{% url 'cough' %}"></canvas>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $coughChart = $("#cough-chart");
+      $.ajax({
+        url: $coughChart.data("url"),
+        success: function (data) {
+        
+          var ctx = $coughChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'High fever',
+                data: data.data,
+                backgroundColor: [
+                'rgb(192, 57, 43)',
+                'rgb(236, 112, 99 )',
+                'rgb(41, 128, 185)',
+                'rgb(40, 180, 99)',
+                'rgb(52, 152, 219)',
+                'rgb(26, 188, 156)',
+                'rgb(229, 152, 102)',
+                'rgb(244, 208, 63)',
+            ],
+            borderColor: [
+            'rgb(192, 57, 43)',
+            'rgb(236, 112, 99 )',
+            'rgb(41, 128, 185)',
+            'rgb(40, 180, 99)',
+            'rgb(52, 152, 219)',
+            'rgb(26, 188, 156)',
+            'rgb(229, 152, 102)',
+            'rgb(244, 208, 63)',
+            ],
+            borderWidth: 0
+              }]          
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Cough Symptom pie chart'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+    $(function () {
+
+        var $coughChart2 = $("#cough-chart2");
+        $.ajax({
+          url: $coughChart2.data("url"),
+          success: function (data) {
+  
+            var ctx2 = $coughChart2[0].getContext("2d");
+  
+            new Chart(ctx2, {
+              type: 'bar',
+              data: {
+                labels: data.labels,
+                datasets: [{
+                  label: 'Cough',
+                  data: data.data,
+                  backgroundColor: [
+                  'rgb(192, 57, 43)',
+                  'rgb(236, 112, 99 )',
+                  'rgb(41, 128, 185)',
+                  'rgb(40, 180, 99)',
+                  'rgb(52, 152, 219)',
+                  'rgb(26, 188, 156)',
+                  'rgb(229, 152, 102)',
+                  'rgb(244, 208, 63)',
+            ],
+            borderColor: [
+            'rgb(192, 57, 43)',
+            'rgb(236, 112, 99 )',
+            'rgb(41, 128, 185)',
+            'rgb(40, 180, 99)',
+            'rgb(52, 152, 219)',
+            'rgb(26, 188, 156)',
+            'rgb(229, 152, 102)',
+            'rgb(244, 208, 63)',
+            ],
+            borderWidth: 0
+                }]          
+              },
+              options: {
+                responsive: true,
+                legend: {
+                  position: 'top',
+                },
+                title: {
+                  display: true,
+                  text: 'Cough symptom Bar chart'
+                }
+              }
+            });
+  
+          }
+        });
+  
+      });
+</script>

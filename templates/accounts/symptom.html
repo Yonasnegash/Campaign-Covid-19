@@ -1,0 +1,606 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Alert -->
+{% include 'partials/_alerts.html' %}
+<!-- Main Content -->
+
+
+  <div class="row" style="margin-left: 10px; margin-right: 10px; margin-top: 50px;" id="allOf">
+   
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-lg-6 col-offset">
+      <!-- Add Contribution -->
+      
+      <h4>Survey for COVID-19 pandamic disease. Please fill the information below</h4>
+      <div>
+          <small>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+              Your personal information is kept confidential. We do no share or sell your information.</small>
+          </small>
+      </div>
+      <hr>
+      <div class="card">
+        <h5 class="card-header"><i class="fas fa-info-circle"></i> Provide Infomation</h5>
+        <div class="card-body">
+            <!-- alerts -->
+      <form action="{% url 'add-symptom' %}" method="POST">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+          <input type="hidden" name="user_id" value="{{ user.id }}">
+        {% else %}
+        <input type="hidden" name="user_id" value="0">
+        {% endif %}
+        <div class="form-group">
+              <label for="exampleFormControlSelect1">Choose Region</label>
+              <select name="region" class="form-control region" id="region">
+                 <option value="">-- Region --</option>
+                  {% for region in region_list %}
+                    <option value="{{ region.id }} ">{{ region.name }}</option>
+                    
+                  {% endfor %}
+              </select>
+          </div>
+          <div class="form-group" id="replaceable">
+            <p id="para"></p>
+          </div>
+          <!-- zone list 1 -->
+        <div class="form-group">
+          <label id="label1" for="exampleFormControlSelect1" style="display: none;">Choose Zone</label>
+          <select id="zone_list1" style="display: none;" name="zone1" class="form-control" >
+
+              {% for zone1 in zone_list1 %}
+                <option value="{{ zone1.id }} ">{{ zone1.name }}</option>
+              {% endfor %}
+          </select>
+          
+      </div>
+        <!-- zone list 2 -->
+        <div class="form-group">
+          <label id="label2" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list2" style="display: none;" name="zone2" class="form-control">
+             {% for zone2 in zone_list2 %}
+               <option value="{{ zone2.id }} ">{{ zone2.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 3 -->
+        <div class="form-group">
+          <label id="label3" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list3" style="display: none;" name="zone3" class="form-control">
+            
+             {% for zone3 in zone_list3 %}
+               <option value="{{ zone3.id }} ">{{ zone3.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 4 -->
+        <div class="form-group">
+          <label id="label4" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list4" style="display: none;" name="zone4" class="form-control">
+             {% for zone4 in zone_list4 %}
+               <option value="{{ zone4.id }} ">{{ zone4.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 5 -->
+        <div class="form-group">
+          <label id="label5" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list5" style="display: none;" name="zone5" class="form-control">
+             {% for zone5 in zone_list5 %}
+               <option value="{{ zone5.id }} ">{{ zone5.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 6 -->
+        <div class="form-group">
+          <label id="label6" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list6" style="display: none;" name="zone6" class="form-control">
+             {% for zone6 in zone_list6 %}
+               <option value="{{ zone6.id }} ">{{ zone6.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 7 -->
+        <div class="form-group">
+          <label id="label7" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list7" style="display: none;" name="zone7" class="form-control">
+             {% for zone7 in zone_list7 %}
+               <option value="{{ zone7.id }} ">{{ zone7.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 8 -->
+        <div class="form-group">
+          <label id="label8" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list8" style="display: none;" name="zone8" class="form-control">
+             {% for zone8 in zone_list8 %}
+               <option value="{{ zone8.id }} ">{{ zone8.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 9 -->
+        <div class="form-group">
+          <label id="label9" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list9" style="display: none;" name="zone9" class="form-control">
+             {% for zone9 in zone_list9 %}
+               <option value="{{ zone9.id }} ">{{ zone9.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 10 -->
+        <div class="form-group">
+          <label id="label10" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list10" style="display: none;" name="zone10" class="form-control">
+             {% for zone10 in zone_list10 %}
+               <option value="{{ zone10.id }} ">{{ zone10.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+        <!-- zone list 11 -->
+        <div class="form-group">
+          <label id="label11" style="display: none;" for="exampleFormControlSelect1">Choose Zone</label>
+          <select id="zone_list11" style="display: none;" name="zone11" class="form-control">
+             {% for zone11 in zone_list11 %}
+               <option value="{{ zone11.id }} ">{{ zone11.name }}</option>
+             {% endfor %}
+         </select>
+        </div>
+          <br>
+    <div class="form-group">
+      <label for="name">Username</label>
+      <input type="text" name="username" class="form-control" {% if user.is_authenticated %} value="{{ user.username }}" {% endif %} required>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Age</label>
+        <select name="age" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>below 18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+            <option>26</option>
+            <option>27</option>
+            <option>28</option>
+            <option>29</option>
+            <option>30</option>
+            <option>31</option>
+            <option>32</option>
+            <option>33</option>
+            <option>34</option>
+            <option>35</option>
+            <option>36</option>
+            <option>37</option>
+            <option>38</option>
+            <option>39</option>
+            <option>40</option>
+            <option>41</option>
+            <option>42</option>
+            <option>43</option>
+            <option>44</option>
+            <option>45</option>
+            <option>46</option>
+            <option>47</option>
+            <option>48</option>
+            <option>49</option>
+            <option>50</option>
+            <option>51</option>
+            <option>52</option>
+            <option>53</option>
+            <option>54</option>
+            <option>55</option>
+            <option>56</option>
+            <option>57</option>
+            <option>58</option>
+            <option>59</option>
+            <option>above 60</option>
+        </select>
+        </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Gender</label>
+        <select name="gender" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        </div>
+<div class="form-group">
+  <label for="phone">Phone</label>
+  <input type="phone" name="phone" class="form-control" required>
+</div>
+<div class="form-group">
+  <label for="phone">City</label>
+  <input type="text" name="city" class="form-control" required>
+</div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you have feel Severe fever?</legend>
+      <div class="col-sm-7">
+        <select name="fever" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you have Cough?</legend>
+      <div class="col-sm-7">
+        <select name="cough" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you have Shortness of breath?</legend>
+      <div class="col-sm-7">
+        <select name="shortness_of_breath" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you feel tiredness?</legend>
+      <div class="col-sm-7">
+        <select name="tiredness" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-5 pt-0">Do you feel sore throat?</legend>
+      <div class="col-sm-7">
+        <select name="sore_throat" class="form-control" id="exampleFormControlSelect1">
+            <option>--select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Comment</label>
+    <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+<input type="submit" value="Submit" class="btn btn-primary btn-block">
+
+      </form>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+  <br><br>
+
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+  
+  $(document).ready(function(){
+
+      
+  
+      $("select.region").change(function(){
+  
+          var selectedRegion = $(this).children("option:selected").val();
+  
+          // alert("You have selected the region - " + selectedRegion);
+          objMyData = selectedRegion;
+
+          
+            
+          if (selectedRegion == 1) { 
+              $('#zone_list1').show();
+              $('#label1').show();
+              $('#zone_list2').hide();
+              $('#label2').hide();
+              $('#zone_list3').hide();
+              $('#label3').hide();
+              $('#zone_list4').hide();
+              $('#label4').hide();
+              $('#zone_list5').hide();
+              $('#label5').hide();
+              $('#zone_list6').hide();
+              $('#labe6').hide();
+              $('#zone_list7').hide();
+              $('#label7').hide();
+              $('#zone_list8').hide();
+              $('#label8').hide();
+              $('#zone_list9').hide();
+              $('#label9').hide();
+              $('#zone_list10').hide();
+              $('#label10').hide();
+              $('#zone_list11').hide();
+              $('#label11').hide();
+          }
+          if (selectedRegion == 2) {
+            $('#zone_list1').hide();
+              $('#label1').hide();
+              $('#zone_list2').show();
+              $('#label2').show();
+              $('#zone_list3').hide();
+              $('#label3').hide();
+              $('#zone_list4').hide();
+              $('#label4').hide();
+              $('#zone_list5').hide();
+              $('#label5').hide();
+              $('#zone_list6').hide();
+              $('#labe6').hide();
+              $('#zone_list7').hide();
+              $('#label7').hide();
+              $('#zone_list8').hide();
+              $('#label8').hide();
+              $('#zone_list9').hide();
+              $('#label9').hide();
+              $('#zone_list10').hide();
+              $('#label10').hide();
+              $('#zone_list11').hide();
+              $('#label11').hide();
+          }
+          if (selectedRegion == 3) {
+              $('#zone_list1').hide();
+              $('#label1').hide();
+              $('#zone_list2').hide();
+              $('#label2').hide();
+              $('#zone_list3').show();
+              $('#label3').show();
+              $('#zone_list4').hide();
+              $('#label4').hide();
+              $('#zone_list5').hide();
+              $('#label5').hide();
+              $('#zone_list6').hide();
+              $('#labe6').hide();
+              $('#zone_list7').hide();
+              $('#label7').hide();
+              $('#zone_list8').hide();
+              $('#label8').hide();
+              $('#zone_list9').hide();
+              $('#label9').hide();
+              $('#zone_list10').hide();
+              $('#label10').hide();
+              $('#zone_list11').hide();
+              $('#label11').hide();
+          }
+          if (selectedRegion == 4) {
+              $('#zone_list1').hide();
+              $('#label1').hide();
+              $('#zone_list2').hide();
+              $('#label2').hide();
+              $('#zone_list3').hide();
+              $('#label3').hide();
+              $('#zone_list4').show();
+              $('#label4').show();
+              $('#zone_list5').hide();
+              $('#label5').hide();
+              $('#zone_list6').hide();
+              $('#labe6').hide();
+              $('#zone_list7').hide();
+              $('#label7').hide();
+              $('#zone_list8').hide();
+              $('#label8').hide();
+              $('#zone_list9').hide();
+              $('#label9').hide();
+              $('#zone_list10').hide();
+              $('#label10').hide();
+              $('#zone_list11').hide();
+              $('#label11').hide();
+          }
+          if (selectedRegion == 5) {
+              $('#zone_list1').hide();
+              $('#label1').hide();
+              $('#zone_list2').hide();
+              $('#label2').hide();
+              $('#zone_list3').hide();
+              $('#label3').hide();
+              $('#zone_list4').hide();
+              $('#label4').hide();
+              $('#zone_list5').show();
+              $('#label5').show();
+              $('#zone_list6').hide();
+              $('#labe6').hide();
+              $('#zone_list7').hide();
+              $('#label7').hide();
+              $('#zone_list8').hide();
+              $('#label8').hide();
+              $('#zone_list9').hide();
+              $('#label9').hide();
+              $('#zone_list10').hide();
+              $('#label10').hide();
+              $('#zone_list11').hide();
+              $('#label11').hide();
+          }
+          if (selectedRegion == 6) {
+            $('#zone_list1').hide();
+            $('#label1').hide();
+            $('#zone_list2').hide();
+            $('#label2').hide();
+            $('#zone_list3').hide();
+            $('#label3').hide();
+            $('#zone_list4').hide();
+            $('#label4').hide();
+            $('#zone_list5').hide();
+            $('#label5').hide();
+            $('#zone_list6').show();
+            $('#label6').show();
+            $('#zone_list7').hide();
+            $('#label7').hide();
+            $('#zone_list8').hide();
+            $('#label8').hide();
+            $('#zone_list9').hide();
+            $('#label9').hide();
+            $('#zone_list10').hide();
+            $('#label10').hide();
+            $('#zone_list11').hide();
+            $('#label11').hide();
+        }
+        if (selectedRegion == 7) {
+          $('#zone_list1').hide();
+          $('#label1').hide();
+          $('#zone_list2').hide();
+          $('#label2').hide();
+          $('#zone_list3').hide();
+          $('#label3').hide();
+          $('#zone_list4').hide();
+          $('#label4').hide();
+          $('#zone_list5').hide();
+          $('#label5').hide();
+          $('#zone_list6').hide();
+          $('#labe6').hide();
+          $('#zone_list7').show();
+          $('#label7').show();
+          $('#zone_list8').hide();
+          $('#label8').hide();
+          $('#zone_list9').hide();
+          $('#label9').hide();
+          $('#zone_list10').hide();
+          $('#label10').hide();
+          $('#zone_list11').hide();
+          $('#label11').hide();
+      }
+      if (selectedRegion == 8) {
+        $('#zone_list1').hide();
+        $('#label1').hide();
+        $('#zone_list2').hide();
+        $('#label2').hide();
+        $('#zone_list3').hide();
+        $('#label3').hide();
+        $('#zone_list4').hide();
+        $('#label4').hide();
+        $('#zone_list5').hide();
+        $('#label5').hide();
+        $('#zone_list6').hide();
+        $('#labe6').hide();
+        $('#zone_list7').hide();
+        $('#label7').hide();
+        $('#zone_list8').show();
+        $('#label8').show();
+        $('#zone_list9').hide();
+        $('#label9').hide();
+        $('#zone_list10').hide();
+        $('#label10').hide();
+        $('#zone_list11').hide();
+        $('#label11').hide();
+    }
+    if (selectedRegion == 9) {
+      $('#zone_list1').hide();
+      $('#label1').hide();
+      $('#zone_list2').hide();
+      $('#label2').hide();
+      $('#zone_list3').hide();
+      $('#label3').hide();
+      $('#zone_list4').hide();
+      $('#label4').hide();
+      $('#zone_list5').hide();
+      $('#label5').hide();
+      $('#zone_list6').hide();
+      $('#labe6').hide();
+      $('#zone_list7').hide();
+      $('#label7').hide();
+      $('#zone_list8').hide();
+      $('#label8').hide();
+      $('#zone_list9').show();
+      $('#label9').show();
+      $('#zone_list10').hide();
+      $('#label10').hide();
+      $('#zone_list11').hide();
+      $('#label11').hide();
+  }
+  if (selectedRegion == 10) {
+    $('#zone_list1').hide();
+    $('#label1').hide();
+    $('#zone_list2').hide();
+    $('#label2').hide();
+    $('#zone_list3').hide();
+    $('#label3').hide();
+    $('#zone_list4').hide();
+    $('#label4').hide();
+    $('#zone_list5').hide();
+    $('#label5').hide();
+    $('#zone_list6').hide();
+    $('#labe6').hide();
+    $('#zone_list7').hide();
+    $('#label7').hide();
+    $('#zone_list8').hide();
+    $('#label8').hide();
+    $('#zone_list9').hide();
+    $('#label9').hide();
+    $('#zone_list10').show();
+    $('#label10').show();
+    $('#zone_list11').hide();
+    $('#label11').hide();
+}
+if (selectedRegion == 11) {
+  $('#zone_list1').hide();
+  $('#label1').hide();
+  $('#zone_list2').hide();
+  $('#label2').hide();
+  $('#zone_list3').hide();
+  $('#label3').hide();
+  $('#zone_list4').hide();
+  $('#label4').hide();
+  $('#zone_list5').hide();
+  $('#label5').hide();
+  $('#zone_list6').hide();
+  $('#labe6').hide();
+  $('#zone_list7').hide();
+  $('#label7').hide();
+  $('#zone_list8').hide();
+  $('#label8').hide();
+  $('#zone_list9').hide();
+  $('#label9').hide();
+  $('#zone_list10').hide();
+  $('#label10').hide();
+  $('#zone_list11').show();
+  $('#label11').show();
+}
+          // $.ajax({
+          //   url: "symptom.html",
+          //   method: "POST",
+          //   success: function (data) {
+              
+          });
+  
+  });
+  
+  </script>
+
+
+
+
+
+
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+  <!-- <script src="{% static 'js/jquery.chained.js' %}"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-chained/1.0.1/jquery.chained.min.js"></script> -->
+  <!-- <script charset=utf-8>
+    
+      // JQuery code to be added in here.
+      $("#zones").chainedTo("#regions");
+  
+    
+
+    </script> -->
+{% endblock %}
