@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid" style="margin-top: 50px;">
+    {% if symptom %}
+    
     <div class="row">
         <!-- alerts -->
         {% include 'partials/_alerts.html' %}
@@ -111,7 +113,18 @@
             </div>
           </div>
         <br><br>
-
+        {% else %}
+        <div class="jumbotron">
+            <h1 class="display-4">Campaign COVID-19</h1>
+            <p class="lead">Campaign COVID-19 project is initiated by Ethiopian Space Science and Technology Institute to counteract against Novel Coronvirus.</p>
+            <hr class="my-4">
+            <p>It helps to identify potiential mass testing areas according to user health status and will display the daily statistical information of suspected cases.</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+            </p>
+          </div>
+<br><br><br><br>
+        {% endif %}
     </div>
 </div>
 

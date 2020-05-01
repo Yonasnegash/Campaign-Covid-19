@@ -6,7 +6,12 @@ from django.http import JsonResponse
 from symptom.models import Symptom
 
 def index(request):
-    return render(request, 'pages/index.html')
+    symptom = Symptom.objects.all()
+
+    context = {
+        'symptom': symptom,
+    }
+    return render(request, 'pages/index.html', context)
 
 def about(request):
     return render(request, 'pages/about.html')
