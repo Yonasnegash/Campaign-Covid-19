@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid" style="margin-top: 50px;">
+<div class="container-fluid" style="margin-top: 100px;">
     {% if symptom %}
     
     <div class="row">
@@ -119,9 +119,13 @@
             <p class="lead">Campaign COVID-19 project is initiated by Ethiopian Space Science and Technology Institute to counteract against Novel Coronvirus.</p>
             <hr class="my-4">
             <p>It helps to identify potiential mass testing areas according to user health status and will display the daily statistical information of suspected cases.</p>
+            {% if user.is_authenticated %}
+
+            {% else %}
             <p class="lead">
               <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
             </p>
+            {% endif %}
           </div>
 <br><br><br><br>
         {% endif %}
