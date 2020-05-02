@@ -8,9 +8,10 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav ml-auto">
-      
-            <li 
+    
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li 
             {% if 'about' in request.path %}
             class="nav-item active"
             {% else %}
@@ -34,18 +35,8 @@
             {% endif %}>
               <a class="nav-link" href="{% url 'embed' %}">Covid-Expansion</a>
             </li>
-    </ul>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
-          <li 
-          {% if 'dashboard' in request.path %}
-          class="nav-item active"
-          {% else %}
-          class="nav-item"
-          {% endif %}>
-            <a class="nav-link" href="{% url 'dashboard' %}">Welcome {{ user.first_name }} (Dashboard)</a>
-          </li>
+         
           <li 
           {% if 'symptom' in request.path %}
           class="nav-item active"
@@ -54,14 +45,22 @@
           {% endif %}>
             <a class="nav-link" href="{% url 'symptom' %}">Symptoms</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">
-              <i class="fas fa-sign-out-alt"></i>Logout
-              </a>
-              <form action="{% url 'logout' %}" method="POST" id="logout">
-                {% csrf_token %}
-                <input type="hidden">
-              </form>
+       
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-columns"></i> Dashboard
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="nav-link" href="{% url 'dashboard' %}" style="color: black;"><i class="fas fa-user"></i> {{ user.first_name }}</a>
+              <div class="dropdown-divider"></div>
+              <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}" style="color: black;">
+                <i class="fas fa-sign-out-alt"></i>Logout
+                </a>
+                <form action="{% url 'logout' %}" method="POST" id="logout">
+                  {% csrf_token %}
+                  <input type="hidden">
+                </form>
+            </div>
           </li>
         {% else %}
           
