@@ -2,7 +2,7 @@
     <!-- <h5 style="text-align: center;"><b>Symptoms with "High Fever" in different zones</b></h5> -->
     
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12" style="width: 100%; height: 80vh;">
         <canvas id="five-symptoms3"   data-url="{% url 'five-symptoms' %}"></canvas><br><br>
       </div>
       <!-- <div class="col-lg-6">
@@ -10,12 +10,12 @@
       </div> -->
     </div>
     <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-7" style="width: 100%; height: 80vh;">
             <!-- Checkbox: <input type="checkbox" id="myCheck"  onclick="myFunction()"> -->
             <!-- <canvas id="five-symptoms" style="display: none;" data-url="{% url 'five-symptoms' %}"></canvas> -->
             <canvas id="five-symptoms"   data-url="{% url 'five-symptoms' %}"></canvas><br><br>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-5" style="width: 100%; height: 80vh;">
             <canvas id="gender" data-url="{% url 'gender' %}"></canvas><br><br>
         </div>
     </div>
@@ -55,6 +55,7 @@
                 }]
               },
               responsive: true,
+              maintainAspectRatio: false,
               legend: {
                 position: 'top',
               },
@@ -107,6 +108,7 @@
               },
               options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 legend: {
                   position: 'bottom',
                 },
@@ -150,6 +152,7 @@
                   }]
                 },
                 responsive: true,
+                maintainAspectRatio: false,
                 legend: {
                   position: 'bottom',
                 },
@@ -202,6 +205,7 @@
               },
               options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 legend: {
                   position: 'bottom',
                 },
