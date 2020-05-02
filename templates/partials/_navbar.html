@@ -26,6 +26,14 @@
             {% endif %}>
               <a class="nav-link" href="{% url 'initiator' %}">Initiator</a>
             </li>
+            <li 
+            {% if 'embed' in request.path %}
+            class="nav-item active"
+            {% else %}
+            class="nav-item"
+            {% endif %}>
+              <a class="nav-link" href="{% url 'embed' %}">Covid-Expansion</a>
+            </li>
     </ul>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">

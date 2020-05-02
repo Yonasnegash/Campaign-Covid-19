@@ -21,6 +21,9 @@ def about(request):
 def initiator(request):
     return render(request, 'pages/initiator.html')
 
+def embed(request):
+    return render(request, 'pages/embedded_map.html')
+
 def three_symptoms(request):
     labels = []
     data = []
