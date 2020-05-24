@@ -1,6 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register("symptomsapi", views.SymptomAPI)
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,4 +20,5 @@ urlpatterns = [
     path('gender', views.gender, name='gender'),
     path('gender-3-symptom', views.gender_with_three_symptom, name="gender-3-symptom"),
     path('all-symptoms', views.all_symptoms, name="all-symptoms"),
+    path('', include(router.urls))
 ]

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 09:29+0300\n"
+"POT-Creation-Date: 2020-05-08 13:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: .\pages\views.py:16
+msgid "Hello"
+msgstr "selam"
+
 #: .\templates\pages\about.html:5
 msgid "About COVID-19"
 msgstr "ስለ ኮቪድ-19"
 
-#: .\templates\partials\_navbar.html:5
-msgid "Suspected Cases"
-msgstr "የተጠረጠሩ ምልኮቶች"
+#: .\templates\pages\index.html:5
+msgid "Let's translate this"
+msgstr "እንተርጉመው"
+
+#: .\templates\pages\index.html:8
+msgid "My name is yonas"
+msgstr "ስሜ ዮናስ ነው"
+
+#: .\templates\pages\initiator.html:5
+msgid "Initiator"
+msgstr ""
+
+#~ msgid "Suspected Cases"
+#~ msgstr "የተጠረጠሩ ምልኮቶች"

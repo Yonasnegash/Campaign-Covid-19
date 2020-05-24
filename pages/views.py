@@ -4,6 +4,9 @@ from django.db.models import Sum, Count
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.utils.translation import gettext as _
+from rest_framework import viewsets
+from .serializer import SymptomSerializer
 
 from symptom.models import Symptom
 
@@ -12,6 +15,7 @@ def index(request):
 
     context = {
         'symptom': symptom,
+        'hello': _('Hello')
     }
     return render(request, 'pages/index.html', context)
 
@@ -187,3 +191,7 @@ def all_symptoms(request):
         'data_t': data_t,
         'data_s': data_s,
     })
+
+class SymptomAPI(viewsets.ModelViewSet):
+    queryset = Symptom.objects.all()
+    serializer_class = SymptomSerializer
