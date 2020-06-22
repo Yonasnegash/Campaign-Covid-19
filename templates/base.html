@@ -2,28 +2,47 @@
 <!-- {% load staticfiles %} -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-170303947-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-170303947-1");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Covid 19 Suspected Cases</title>
 
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link
+      href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
 
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/modern-business.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/map_style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
-  
-</head>
-<body>
-    {% include 'partials/_navbar.html' %}
-    {% block content%} {% endblock %}
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/modern-business.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/map_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
+  </head>
+  <body>
+    {% include 'partials/_navbar.html' %} {% block content%} {% endblock %}
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <!-- <script type="text/javascript" src="{{ STATIC_URL }} /vendor/jquery/jquery.min.js "></script> -->
     <script src="{% static 'js/jquery.chained.js' %}"></script>
-    <script src="https://kit.fontawesome.com/47755f9370.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/47755f9370.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -33,6 +52,6 @@
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-chained/1.0.1/jquery.chained.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script> -->
-      {% include 'partials/_footer.html' %}
-</body>
+    {% include 'partials/_footer.html' %}
+  </body>
 </html>
